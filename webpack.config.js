@@ -8,23 +8,15 @@ module.exports = {
     entry: './src/index.js',
     mode: 'development',
     devtool: 'inline-source-map',
-    devServer: {
-        static: {
-            directory: path.join(__dirname, "dist")
-        },
-        open: true,
-        hot: true,
-        port: 3000,
-    },
     output: {
-        path: path.resolve(__dirname, './dist'),
+        path: path.join(__dirname, 'dist'),
         filename: 'main.js'
     },
     plugins: [
         new MiniCssExtractPlugin(),
         new OptimizeCssAssetsWebpackPlugin(),
         new TerserWebpackPlugin(),
-        new HtmlWebpackPlugin({template: './src/index.pug'})
+        new HtmlWebpackPlugin({template: path.join(__dirname, 'src/index.pug')})
     ],
     optimization: {
         minimize: true,
